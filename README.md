@@ -1,6 +1,6 @@
 # JSON VAT
 
-You'll likely have heard about the impending ~~doom~~ changes which will hit EU tech businesses in January 2015. At present, there is no government sponsored API for accessing the current VAT rates for a given country. This API allows you to access up-to-date VAT rates for any EU country. 
+You'll likely have heard about the impending ~~doom~~ changes which will hit EU tech businesses in January 2015. At present, there is no government sponsored API for accessing the current VAT rates for a given country. This very simple Ruby client allows you to access up-to-date VAT rates for any EU country. 
 
 This uses the [jsonvat.com](http://jsonvat.com) service to obtain its data. Full details can be [seen here](http://github.com/adamcooke/vat-rates).
 
