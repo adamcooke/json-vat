@@ -5,7 +5,7 @@ This is a Ruby client for searching the `jsonvat.com` service.
 ## Installation
 
 ```ruby
-gem 'json_vat', '~> 1.0', :require => 'json_vat'
+gem 'json_vat', '~> 1.0'
 ```
 
 ## Usage
