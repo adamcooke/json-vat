@@ -4,6 +4,12 @@ You'll likely have heard about the impending ~~doom~~ changes which will hit EU 
 
 This uses the [jsonvat.com](http://jsonvat.com) service to obtain its data. Full details can be [seen here](http://github.com/adamcooke/vat-rates).
 
+## Important notes
+
+This information is provided on an as-is basis. The authors or contributors cannot be held responsible for its accuracy or completeness. You use the data provided by jsonvat.com entirely at your own risk.
+
+The API returns the standard & reduced VAT rates for EU countries. In some circumstances, you may need to charge other rates for certain types of product. For a full list, see [this document](http://ec.europa.eu/taxation_customs/resources/documents/taxation/vat/how_vat_works/rates/vat_rates_en.pdf).
+
 ## Installation
 
 ```ruby
