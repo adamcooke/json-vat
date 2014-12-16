@@ -1,6 +1,8 @@
 # JSON VAT
 
-This is a Ruby client for searching the `jsonvat.com` service.
+You'll likely have heard about the impending ~~doom~~ changes which will hit EU tech businesses in January 2015. At present, there is no government sponsored API for accessing the current VAT rates for a given country. This API allows you to access up-to-date VAT rates for any EU country. 
+
+This uses the [jsonvat.com](http://jsonvat.com) service to obtain its data. Full details can be [seen here](http://github.com/adamcooke/vat-rates).
 
 ## Installation
 
@@ -45,6 +47,9 @@ JSONVAT.cache
 # To download the current rates manually, you can use this method. This will return
 # a string of the data currently available on jsonvat.com
 JSONVAT.download
+
+# Disable caching and always download the latest data from jsonvat.com
+JSONVAT.cache_file = nil
 ```
 
 If you need to change the cache path, you can do so with this command:
