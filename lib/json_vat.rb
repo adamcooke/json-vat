@@ -38,7 +38,13 @@ module JSONVAT
     end
 
     def country(country)
-      self.rates.select { |r| r.country_code == country.to_s.upcase }.first
+      code = country.to_s.upcase
+
+      # Fix ISO-3166-1-alpha2 exceptions
+      if code == 'UK' then code = 'GB' end
+      if code == 'EL' then code = 'GR' end
+
+      self.rates.find { |r| r.country_code == code }
     end
 
     def [](country)
@@ -46,6 +52,5 @@ module JSONVAT
     end
 
   end
-
 
 end
