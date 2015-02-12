@@ -4,14 +4,14 @@ require 'json'
 require 'json_vat/country'
 
 module JSONVAT
-
+  @cache_file = '/tmp/jsonvat.json'
+  
   class << self
-
     def cache_path
-      @cache_file ||= '/tmp/jsonvat.json'
+      @cache_file
     end
 
-    attr_writer :cache_path
+    attr_writer :cache_file
 
     def download
       Net::HTTP.get_response(URI.parse('http://jsonvat.com')).body
