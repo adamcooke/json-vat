@@ -2,7 +2,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "json_vat"
-  s.version     = '1.0.0'
+  s.version     = '1.1.0'
   s.authors     = ["Adam Cooke"]
   s.email       = ["me@adamcooke.io"]
   s.homepage    = "http://github.com/adamcooke/json-vat"
