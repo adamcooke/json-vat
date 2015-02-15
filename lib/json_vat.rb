@@ -2,16 +2,22 @@ require 'net/http'
 require 'uri'
 require 'json'
 require 'json_vat/country'
+require 'json_vat/file_cache_backend'
 
 module JSONVAT
 
   class << self
 
-    def cache_path
-      @cache_file ||= '/tmp/jsonvat.json'
+    def perform_caching?
+      @perform_caching != false
     end
 
-    attr_writer :cache_path
+    def cache_backend
+      @cache_backend ||= FileCacheBackend.new
+    end
+
+    attr_writer :cache_backend
+    attr_writer :perform_caching
 
     def download
       Net::HTTP.get_response(URI.parse('http://jsonvat.com')).body
@@ -19,13 +25,13 @@ module JSONVAT
 
     def cache
       content = self.download
-      File.open(self.cache_path, 'w') { |f| f.write(content) }
+      self.cache_backend.write(content)
       content
     end
 
     def rates_through_cache
-      if self.cache_path.is_a?(String)
-        File.exist?(self.cache_path) ? File.read(self.cache_path) : self.cache
+      if self.perform_caching?
+        self.cache_backend.read || self.cache
       else
         self.download
       end

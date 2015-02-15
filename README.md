@@ -1,6 +1,6 @@
 # JSON VAT
 
-You'll likely have heard about the impending ~~doom~~ changes which will hit EU tech businesses in January 2015. At present, there is no government sponsored API for accessing the current VAT rates for a given country. This very simple Ruby client allows you to access up-to-date VAT rates for any EU country. 
+You'll likely have heard about the impending ~~doom~~ changes which will hit EU tech businesses in January 2015. At present, there is no government sponsored API for accessing the current VAT rates for a given country. This very simple Ruby client allows you to access up-to-date VAT rates for any EU country.
 
 This uses the [jsonvat.com](http://jsonvat.com) service to obtain its data. Full details can be [seen here](http://github.com/adamcooke/vat-rates).
 
@@ -55,11 +55,27 @@ JSONVAT.cache
 JSONVAT.download
 
 # Disable caching and always download the latest data from jsonvat.com
-JSONVAT.cache_file = nil
+JSONVAT.perform_caching = false
 ```
 
 If you need to change the cache path, you can do so with this command:
 
 ```ruby
-JSONVAT.cache_file = File.join('other', 'path', 'rates.json')
+JSONVAT.cache_backend.path = File.join('other', 'path', 'rates.json')
+```
+
+You can also create your own cache backends if you want to store data somewhere
+other than on your file system. To do this, you need to create a class which
+responds to the following methods:
+
+* `read` - must return the cached data or nil if no data has been cached.
+* `write(data)` - must write the data to the cache. Return value is not important.
+
+You can find an example in the `lib/json_vat/file_cache_backend` path which is
+the default cache used for file system storage.
+
+Once you have created your class, you should set it as the cache backend.
+
+```ruby
+JSONVAT.cache_backend = MyCustomBackend.new
 ```
