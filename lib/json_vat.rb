@@ -16,11 +16,16 @@ module JSONVAT
       @cache_backend ||= FileCacheBackend.new
     end
 
+    def host
+      @host ||= 'http://jsonvat.com'
+    end
+
     attr_writer :cache_backend
     attr_writer :perform_caching
+    attr_writer :host
 
     def download
-      Net::HTTP.get_response(URI.parse('http://jsonvat.com')).body
+      Net::HTTP.get_response(URI.parse(self.host)).body
     end
 
     def cache
