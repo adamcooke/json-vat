@@ -71,8 +71,9 @@ responds to the following methods:
 * `read` - must return the cached data or nil if no data has been cached.
 * `write(data)` - must write the data to the cache. Return value is not important.
 
-You can find an example in the `lib/json_vat/file_cache_backend` path which is
-the default cache used for file system storage.
+You can find some examples included:
+* `lib/json_vat/file_cache_backend` - the default cache used for file system storage
+* `lib/json_vat/memcache_backend` - caches in memcache with customisable key/ttl
 
 Once you have created your class, you should set it as the cache backend.
 
