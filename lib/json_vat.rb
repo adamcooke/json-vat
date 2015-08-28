@@ -3,6 +3,7 @@ require 'uri'
 require 'json'
 require 'json_vat/country'
 require 'json_vat/file_cache_backend'
+require 'json_vat/memcache_backend'
 
 module JSONVAT
 
