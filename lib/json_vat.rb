@@ -31,6 +31,7 @@ module JSONVAT
     def cache
       content = self.download
       self.cache_backend.write(content)
+      self.reset_rates
       content
     end
 
@@ -46,6 +47,10 @@ module JSONVAT
       @rates ||= JSON.parse(self.rates_through_cache)['rates'].map do |country|
         JSONVAT::Country.new(country)
       end
+    end
+
+    def reset_rates
+      @rates = nil
     end
 
     def country(country)
