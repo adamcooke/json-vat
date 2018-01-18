@@ -42,9 +42,21 @@ module JSONVAT
       end
     end
 
-    def rates
-      @rates ||= JSON.parse(self.rates_through_cache)['rates'].map do |country|
+    def load_rates
+      JSON.parse(self.rates_through_cache)['rates'].map do |country|
         JSONVAT::Country.new(country)
+      end
+    end
+
+    def reload_rates?
+      !self.perform_caching? || (self.perform_caching? && self.cache_backend.invalid?)
+    end
+
+    def rates
+      if reload_rates?
+        @rates = load_rates
+      else
+        @rates
       end
     end
 
@@ -61,7 +73,6 @@ module JSONVAT
     def [](country)
       country(country)
     end
-
   end
 
 end
