@@ -70,6 +70,7 @@ responds to the following methods:
 
 * `read` - must return the cached data or nil if no data has been cached.
 * `write(data)` - must write the data to the cache. Return value is not important.
+* `invalid?` - must return true whenever the cache has been updated and the JSON should be re-parsed
 
 You can find an example in the `lib/json_vat/file_cache_backend` path which is
 the default cache used for file system storage.
