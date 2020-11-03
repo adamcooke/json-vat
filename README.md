@@ -13,7 +13,7 @@ The API returns the standard & reduced VAT rates for EU countries. In some circu
 ## Installation
 
 ```ruby
-gem 'json_vat', '~> 1.0'
+gem 'json_vat', '~> 2.0'
 ```
 
 ## Usage
